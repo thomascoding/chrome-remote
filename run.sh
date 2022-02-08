@@ -1,0 +1,1 @@
+docker run --name chrome-remote --network=host --rm --tmpfs /var/cache --tmpfs /tmp --tmpfs /root thomascoding/chrome-remote

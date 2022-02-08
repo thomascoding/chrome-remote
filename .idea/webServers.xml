@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2f7e5e0d-f89f-4910-be64-416320cc186c" name="IBM2">
+        <fileTransfer rootFolder="/root/chrome-remote-docker" accessType="SFTP" host="192.168.1.242" port="22" sshConfigId="ca887229-5c46-4c24-9235-017d1097cfcf" sshConfig="root@192.168.1.242:22 agent" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
