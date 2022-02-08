@@ -14,13 +14,14 @@ const defaultFlags = [
     //'--single-process',
     '--no-zygote',
     '--no-initial-navigation',
-    '--headless'
+    '--headless',
+    '--disable-dev-shm-usage'
 ];
 
 app.get("/", (req, res, next) => {
     console.log('/');
-    res.set('Content-Type', 'text/html')
-    res.send(fs.readFileSync('index.html'));
+    res.set('Content-Type', 'text/plain')
+    res.send(fs.readFileSync('README.md'));
 });
 
 app.get("/launch", async (req, res, next) => {
@@ -60,12 +61,13 @@ app.get("/launch", async (req, res, next) => {
         });
     }
 });
-app.get("/killall", (req, res, next) => {
+app.get("/killall", async (req, res, next) => {
     console.log('KillAll');
     Object.values(proxyInstances).map((i) => i.close())
     proxyInstances = {}
     initPortRange();
-    chromeLauncher.killAll().then(()=>res.json({'status':'ok'}));
+    await chromeLauncher.killAll();
+    res.json({'status':'ok'});
 });
 
 app.listen(3000,localAddress, () => {
